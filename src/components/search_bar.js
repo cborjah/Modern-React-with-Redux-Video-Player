@@ -8,12 +8,20 @@ class SearchBar extends Component { // Class based components must always have a
       term: ''
     }
   }
+
   render() {
     return (
-      <input
-      value = {this.state.term} // Makes input a controlled form element.
-      onChange={event => this.setState({ term: event.target.value })} />
+      <div className="search-bar">
+        <input
+        value = {this.state.term} // Makes input a controlled form element.
+        onChange={event => this.onInputChange(event.target.value)} />
+      </div>
     );
+  }
+
+  onInputChange(term) {
+    this.setState({term});
+    this.props.onSearchTermChange(term);
   }
 }
 
